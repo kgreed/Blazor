@@ -1,0 +1,59 @@
+﻿@using Demo.Blazor.Model
+@using Demo.Blazor.Services;
+@inject CountryNamesService CountryNamesService
+
+<div class="demo-description">
+    <h2>ComboBox - Incremental Filtering</h2>
+    <p>
+        The ComboBox allows you to dynamically filter list items based on the text typed into the editor. For this purpose, apply the required mode to the <b>FilteringMode</b> property.
+    </p>
+    <ul>
+        <li><b>Contains</b> - The editor is filtered for list items that contain the search string. Search string matches are highlighted.</li>
+        <li><b>StartsWith</b> - The editor is filtered for list items that begin with the search string.</li>
+        <li><b>None</b> - The filter is not applied to list items.</li>
+    </ul>
+    <p>
+        In this demo, the filter mode is set to Contains. To see the feature in action, set the focus to the ComboBox component and enter a search query.
+    </p>
+</div>
+
+@if (Data != null)
+{
+    <div class="card demo-card">
+        <div class="card-header">Text = "<b>@(Text)</b>", SelectedItem = <b>@(SelectedItem == null ? "Null" : SelectedItem)</b></div>
+        <div class="card-body mw-480" style="height: 280px">
+                <DxComboBox Id="ComboBox1"
+                            Data="@Data"
+                            FilteringMode=@DataGridFilteringMode.Contains
+                            @bind-SelectedItem="@SelectedItem"
+                            @bind-Text="@Text"
+                            @bind-DropDownVisible=@DropDownVisible></DxComboBox>
+        </div>
+    </div>
+
+    <div class="code-snippet card demo-card-wide">
+        <CodeSnippetHeader></CodeSnippetHeader>
+        <div class="card-footer text-muted">
+            <CodeSnippet_Editors_ComboBox_Filtering></CodeSnippet_Editors_ComboBox_Filtering>
+        </div>
+    </div>
+}
+
+@code {
+    IEnumerable<string> Data;
+
+    protected override async Task OnInitAsync()
+    {
+        Data = await CountryNamesService.Load();
+    }
+
+    string text = "";
+    string Text { get => text; set { text = value; Invoke(StateHasChanged); } }
+
+    string selectedItem = null;
+    string SelectedItem { get => selectedItem; set { selectedItem = value; Invoke(StateHasChanged); } }
+
+
+    bool dropDownVisible = true;
+    bool DropDownVisible { get => dropDownVisible; set { dropDownVisible = value; Invoke(StateHasChanged); }  }
+}

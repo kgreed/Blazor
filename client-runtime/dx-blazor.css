@@ -299,6 +299,7 @@
 .dxbs-memo .form-control::-ms-clear,
 .dxbs-button-edit .form-control::-ms-clear,
 .dxbs-spin-edit .form-control::-ms-clear,
+
 .dxbs-dropdown-edit .form-control::-ms-clear,
 .dxbs-tagbox-input::-ms-clear
 {
@@ -4859,6 +4860,29 @@ html:not(.dxMobileUI) .dxbs-tabs-scrollable.has-overflow .nav,
 
 /** Blazor Data Grid **/
 
+/* Virtual Scrolling */
+
+.dxbs-gridview > div > .dxbs-grid-vsd {
+    height: 200px;
+    overflow-x: hidden;
+}
+.dxbs-scrollbar-padding {
+    padding-right: 17px;
+}
+.dxgvHSDC > .dxbs-table.table-bordered {
+    border: none;
+}
+
+.dxgvCSD {
+    -webkit-overflow-scrolling: touch;
+}
+
+/* There is not pager */
+.dxbs-gridview > .card > .dxgvHSDC + .dxgvCSD,
+.dxbs-gridview .dxbs-table > tbody > tr:last-child > td {
+    border-bottom: none;
+}
+
 /* command cell buttons */
 .dxbs-gridview > .card .dxbs-table > tbody > tr > td.dxbs-cmd-cell > span > .btn.btn-link,
 .dxbs-gridview > .card .dxbs-table > tbody > tr > td.dxbs-cmd-cell > span > .dxgBCTC > .btn.btn-link,
@@ -4867,7 +4891,8 @@ html:not(.dxMobileUI) .dxbs-tabs-scrollable.has-overflow .nav,
     padding-top: 0;
     padding-bottom: 0;
 }
-/** Blazor Combo Box **/
+
+/** Blazor ComboBox **/
 .dx-listbox .input-group-append > .dropdown-menu {
     padding: 0;
 }
@@ -4880,7 +4905,7 @@ html:not(.dxMobileUI) .dxbs-tabs-scrollable.has-overflow .nav,
 			border-top: none;
 		}
 
-.dx-listbox .dropdown-menu {
+.dx-listbox-scrollable {
 	overflow-x: hidden;
 	overflow-y: auto;
 }
@@ -4889,6 +4914,18 @@ html:not(.dxMobileUI) .dxbs-tabs-scrollable.has-overflow .nav,
 }
 .dx-lb-datagrid > .card > table > tbody > tr:last-child > td {
      border-bottom: 0;
+}
+div.dxbs-dm > .dxbs-listbox,
+div.dxbs-dm.dxbs-listbox > ul {
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.dxbs-combobox > div > div.input-group-append > div.dxbs-dm.dropdown-menu {
+    display: block;
+    max-height: 200px;
 }
 /** Blazor Calendar **/
 .dxbs-calendar > .calendar-row > .calendar-view {
@@ -4989,8 +5026,8 @@ html:not(.dxMobileUI) .dxbs-tabs-scrollable.has-overflow .nav,
 
 /* Common for Blazor */
 .dxbs-border-radius-top-0 {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
 }
 
 /*iOS click does not work - workaround*/
@@ -5021,4 +5058,316 @@ html:not(.dxMobileUI) .dxbs-tabs-scrollable.has-overflow .nav,
 .dxbs-date-edit.valid.modified .form-control {
 
     border-color: #26b050;
+}
+
+/** Blazor TreeView **/
+.dxbs-tree ul.flex-column {
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+}
+
+.dxbs-tree ul.nav > li > a:not(.disabled) {
+    cursor: pointer;
+}
+
+.dxbs-tree ul.nav > li > a > span.image:not(:last-child), .dxbs-tree ul.nav > li > a > .badge > span.image:not(:last-child), .dxbs-tree ul.nav > li > a > span.expand-btn:not(:last-child), .dxbs-tree ul.nav > li > a > span.node-lp:not(:last-child) {
+    padding: 0.4em;
+    margin: -0.4em;
+    margin-right: 0;
+}
+
+.dxbs-icon {
+    position: relative;
+    top: 2px;
+    display: inline-block;
+    text-rendering: auto;
+    font-family: "dxbs-icons" !important;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+
+.dxbs-icon-minus::before {
+    content: "\e035";
+}
+
+.dxbs-icon-plus::before {
+    content: "\e037";
+}
+
+.dxbs-icon::before {
+    vertical-align: top;
+}
+
+.dxbs-tree > ul.nav ul.nav {
+    margin: 0.2em 2em;
+    overflow-y: hidden;
+}
+
+.dxbs-tree ul.flex-column {
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+}
+
+
+
+/* Blazor Scheduler */
+/* toolbar */
+.dxbs-scheduler .dxbs-sc-toolbar {
+    display: flex;
+}
+.dxbs-scheduler .dxbs-view-visible-interval {
+    align-items: center;
+    display: flex;
+    flex-grow: 1;
+}
+.dxbs-scheduler .dxbs-view-navigator,
+.dxbs-scheduler .dxbs-view-visible-interval {
+    margin-left: 1em;
+}
+.dxbs-scheduler .dxbs-sc-toolbar-group {
+    display: flex;
+}
+.dxbs-scheduler .dxbs-sc-toolbar-group > button {
+    margin-left: -1px;
+}
+.dxbs-scheduler .dxbs-sc-toolbar-group > button:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.dxbs-scheduler .dxbs-sc-toolbar-group > button:not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.dxbs-view-visible-interval {
+    position: relative;
+}
+.dxbs-view-visible-interval .dxb-vvi-outline {
+    border-color: transparent;
+}
+.dxbs-view-visible-interval .dxb-vvi-text {
+    padding-right: 4px;
+}
+.dxbs-date-navigator .dxe-apt-labels-container {
+    font-size: 0px;
+}
+.dxbs-date-navigator .dxe-apt-labels-container > span {
+    display: inline-block;
+}
+.dxbs-date-navigator .dxe-apt-labels-container > span:nth-last-child(n+2) {
+    margin-right: 2px;
+}
+.dxbs-date-navigator .dxe-apt-labels-container {
+    height: 5px;
+    margin-bottom: -5px;
+}
+.dxbs-date-navigator .dxe-apt-labels-container > span {
+    width: 5px;
+    height: 5px;
+    margin-top: -2px;
+}
+.dxbs-date-navigator .dxbs-more-labels-container > .dxbs-h-line {
+    width: 5px;
+    top: 2px;
+    left: 0px;
+    border-width: 1px 0 0 0;
+    border-style: solid;
+}
+.dxbs-date-navigator .dxbs-more-labels-container > .dxbs-v-line {
+    height: 5px;
+    left: 2px;
+    border-width: 0 1px 0 0;
+    border-style: solid;
+}
+.dxbs-date-navigator .dxbs-more-labels-container {
+    position: relative;
+    opacity: 0.7;
+}
+.dxbs-date-navigator .dxbs-more-labels-container > span.dxbs-h-line,
+.dxbs-date-navigator .dxbs-more-labels-container > span.dxbs-v-line {
+    position: absolute;
+    display: inline-block;
+}
+/* View */
+.dxbs-scheduler .dxbs-sc-horizontal-view,
+.dxbs-scheduler .dxbs-sc-vertical-view {
+    table-layout: fixed;
+}
+.dxbs-scheduler .dxbs-sc-horizontal-view > tr > td:first-child,
+.dxbs-scheduler .dxbs-sc-vertical-view > tr > td:first-child {
+    border-left: 0px;
+}
+.dxbs-scheduler .dxbs-sc-vertical-view > tr > td {
+    border-top: 0px;
+}
+.dxbs-scheduler .table.dxbs-sc-horizontal-view,
+.dxbs-scheduler .table.dxbs-sc-vertical-view {
+    border: 0;
+}
+.dxbs-scheduler .table tr > td.dxsc-date-hr:nth-last-child(-2n+2),
+.dxbs-scheduler .table tr > td.dxsc-horizontal-rh:nth-last-child(-2n+2),
+.dxbs-scheduler .dxbs-sc-vertical-view > tr > td:last-child,
+.dxbs-scheduler .dxbs-sc-horizontal-view > tr > td:last-child {
+    border-right: 0px;
+}
+.dxbs-scheduler .dxbs-sc-all-day-area:before {
+    content: ".";
+    visibility: hidden;
+}
+.dxbs-scheduler .dxbs-sc-date-hr {
+    overflow: hidden;
+    padding: .5rem .3rem .3rem;
+}
+.dxbs-scheduler .dxbs-sc-date-hr-today > div {
+    position: absolute;
+    height: 4px;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+.dxbs-scheduler .dxbs-sc-date-hr-today {
+    position: relative;
+}
+.dxbs-scheduler .dxbs-sc-minute-cell:before {
+    content: ".";
+    visibility: hidden;
+}
+.dxbs-scheduler .table tr > td.dxbs-sc-minute-cell {
+    border-left: 0px;
+    width: 3.5em;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 0.75em;
+}
+.dxbs-scheduler .table tr > td.dxbs-sc-hour-cell {
+    border-right: 0px;
+    width: 3.5em;
+    text-align: right;
+}
+.dxbs-scheduler .dxbs-sc-hour-boundary {
+    border-style: solid;
+}
+.dxbs-scheduler .dxbs-sc-time-marker-line {
+    width: 100%;
+    border-style: dashed;
+    border-width: 1px 0 0 0;
+}
+.dxbs-scheduler .dxbs-sc-time-marker {
+    display: flex;
+    align-items: center;
+    position: absolute;
+}
+.dxbs-scheduler .dxbs-sc-time-indicator {
+    position: absolute;
+}
+.dxbs-scheduler .dxbs-sc-time-indicator-line {
+    width: 100%;
+    height: 2px;
+}
+.dxbs-scheduler .dxbs-sc-time-marker-image {
+    height: 12px;
+    width: 12px;
+    border-radius: 100%;
+    border: 2px solid transparent;
+    z-index: 100;
+}
+/* Appointment */
+.dxbs-scheduler .dxbs-sc-apt {
+    position: absolute;
+    padding: 2px 2px 1px 2px;
+    font-size: 0.9em;
+}
+.dxbs-scheduler .dxbs-sc-apt .dxsc-apt-content {
+    position: relative;
+    overflow: hidden;
+    height: 100%
+}
+.dxbs-scheduler .dxbs-sc-horizontal-apt {
+    text-align: center;
+}
+.dxbs-scheduler .dxbs-sc-apt .dxsc-apt-bg {
+    opacity: 0.8;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+.dxbs-scheduler .dxbs-sc-apt.dxbs-sc-vertical-apt .dxsc-apt-status-container {
+    position: relative;
+    border-width: 0;
+}
+.dxbs-scheduler .dxbs-sc-apt.dxbs-sc-vertical-apt .dxsc-apt-status-container:after {
+    content: " ";
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
+    box-sizing: border-box;
+    background-color: transparent;
+    border: 1px solid white;
+    opacity: 0.4;
+    border-radius: inherit;
+}
+.dxbs-scheduler .dxbs-sc-apt.dxbs-sc-vertical-apt .dxsc-apt-status-container {
+    width: 0.4em;
+    margin-right: -0.4em;
+    height: 100%;
+}
+.dxbs-scheduler .dxbs-sc-apt .dxsc-apt-status-container {
+    background-color: white;
+    box-sizing: border-box;
+}
+.dxbs-scheduler .dxbs-sc-vertical-apt .dxsc-apt-status-container {
+    width: 0.5rem;
+    height: 100%;
+    float: left;
+}
+.dxbs-scheduler .dxbs-sc-apt .dxbs-sc-apt-status-container .dxsc-apt-status {
+    display: block;
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+.dxbs-scheduler .dxbs-sc-apt .dxsc-content-wrapper {
+    padding: 0.2em 0.5em;
+}
+.dxbs-scheduler .dxbs-sc-apt.dxbs-sc-vertical-apt .dxsc-content-wrapper {
+    padding-left: 0.9em;
+}
+.dxbs-scheduler .dxbs-sc-apt-description {
+    font-size: 0.8em;
+    opacity: .65;
+}
+.dxbs-scheduler .dxbs-sc-vertical-apt .dxbs-sc-apt-images-container {
+    text-align: right;
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.dxbs-scheduler .dxbs-sc-vertical-apt .dxbs-sc-apt-images-container {
+    padding-right: 0.4em;
+}
+.dxbs-scheduler .dxbs-sc-horizontal-apt .dxbs-sc-apt-images-container {
+    margin-right: 0.5rem;
+}
+.dxbs-scheduler .dxbs-sc-horizontal-apt .dxbs-sc-apt-images-container {
+    display: inline-block;
+}
+.dxbs-scheduler .dxbs-sc-horizontal-apt .dxbs-sc-apt-images-container > * {
+    vertical-align: middle;
+}
+.dxbs-appointment-edit-dialog .dxbs-apt-start-time-edit,
+.dxbs-appointment-edit-dialog .dxbs-apt-end-time-edit {
+    width: 100% !important;
+}
+
+div.main {
+    overflow-y: hidden;
 }

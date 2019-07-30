@@ -1,8 +1,9 @@
 ﻿@inject IJSRuntime JsRuntime;
+@inject IComponentContext ComponentContext
 
 <div class="social-panel">
     <div>
-        <div class="sp-caption">Help spread the word - DevExpress UI for Blazor is available for free.</div>
+        <div class="sp-caption">Help spread the word - The DevExpress UI for Blazor (CTP) is available for free.</div>
         <div class="fb-share-button"
              data-href="https://dxpr.es/2WogLq7"
              data-layout="button"
@@ -22,8 +23,9 @@
 </div>
 
 @code {
-    protected override Task OnAfterRenderAsync()
+    protected override void OnAfterRender()
     {
-        return JsRuntime.InvokeAsync<string>("UpdateSharingButton");
+        if(ComponentContext.IsConnected)
+            JsRuntime.InvokeAsync<string>("UpdateSharingButton");
     }
 }

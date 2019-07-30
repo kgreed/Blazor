@@ -11,10 +11,13 @@ Check out this [demo in live](https://demos.devexpress.com/blazor/).
 
 # Version compatibility
 
-The following table describes the version compatibility of .NET Core 3.0 Preview and the DevExpress.Blazor NuGet package.
+The following table describes the version compatibility of .NET Core 3.0 Preview and the DevExpress.Blazor NuGet package:
 
 | .NET Core 3.0 version | DevExpress.Blazor.nuget version |
 | ------------- | ------------- |
+| [.NET Core 3.0 Preview **7**](https://devblogs.microsoft.com/aspnet/asp-net-core-and-blazor-updates-in-net-core-3-0-preview-7/) | **0.1.0 Beta** |
+| [.NET Core 3.0 Preview **6**](https://devblogs.microsoft.com/aspnet/asp-net-core-and-blazor-updates-in-net-core-3-0-preview-6/) | 0.0.**12** |
+| [.NET Core 3.0 Preview **6**](https://devblogs.microsoft.com/aspnet/asp-net-core-and-blazor-updates-in-net-core-3-0-preview-6/) | 0.0.**11** |
 | [.NET Core 3.0 Preview **6**](https://devblogs.microsoft.com/aspnet/asp-net-core-and-blazor-updates-in-net-core-3-0-preview-6/) | 0.0.**10** |
 | .NET Core 3.0 Preview **5** | 0.0.**9** |
 | .NET Core 3.0 Preview **5** | 0.0.**8** |
@@ -26,9 +29,9 @@ The following table describes the version compatibility of .NET Core 3.0 Previe
 
 # Set up your environment
 
-1. Install Visual Studio 2019 (latest update).
-2. Ensure that you have .NET Core 3 (preview 4) installed.
-3. If you work with the release version of Visual Studio 2019, make sure to enable the option "Use previews of the .NET Core SDK".
+1. Install the latest Visual Studio 2019 update.
+2. Ensure that you have the latest .NET Core 3 version (from supported versions listed above) installed.
+3. If you use the release version of Visual Studio 2019, ensure the "Use previews of the .NET Core SDK" option is enabled.
 
 The corresponding check box's location depends on the Visual Studio build number. You can find the check box here:
 
@@ -46,6 +49,9 @@ You can find appropriate demos in the repositories below:
 
 * demo/BlazorDemo.ServerSide
 * demo/BlazorDemo.ClientSide
+* demo/BlazorDemo.ClientSideWithPrerendering&#42; 
+
+> &#42; For more information, see the [Update Metadata at Runtime - Free SEO Tool](https://community.devexpress.com/blogs/aspnet/archive/2019/06/27/devexpress-blazor-update-metadata-at-runtime-free-seo-tool.aspx) blog post.
 
 To open the required demo, do the following:
 
@@ -57,6 +63,10 @@ To open the required demo, do the following:
 	or
 	
 	**demo/BlazorDemo.ClientSide/BlazorDemo.ClientSide.sln** 
+	
+	or
+	
+	**demo/BlazorDemo.ClientSideWithPrerendering/BlazorDemo.ClientSideWithPrerendering.sln** 
 	  
 3. Start the application.
 
@@ -98,20 +108,33 @@ Follow the steps below to try our UI for Blazor in your own application.
    
    Select the "Early Access" NuGet package source you have just created in the "Package source" combo box.
 
-   Make sure that the "Include prerelease" option is selected.
-   
    Install the "DevExpress.Blazor" NuGet package.
    
    ![Add new NuGet source](media/VS2019Release-AddNuGetPackage.png)
 
-4. Navigate to the GitHub repository and download all files from the "client-runtime" directory. Put the downloaded files into the "wwwroot" directory of your project. Include these files to your start page.
-5. Register our namespace in _Imports.razor file: 
+4. Navigate to the DevExpress Blazor GitHub repository and download all the files from the [client-runtime directory](https://github.com/DevExpress/Blazor/tree/master/client-runtime) to your project’s `wwwroot` directory.
 
-  ```
-  @using DevExpress.Blazor
-  ```
+   > To download a file, open it on GitHub, click the **Raw** button, right-click anywhere within the file contents, and select **Save as...** from the displayed context menu.
 
-6. Your application is ready to use DevExpress Blazor.
+5. Link the downloaded files:
+   * For server-side Blazor, add the lines below to the _\_Host.cshtml_ file.
+   * For client-side Blazor, add the lines below to the _Index.cshtml_ file.
+    
+    ```html
+    <head>
+      ...
+      <link href="dx-blazor.css" rel="stylesheet" />
+      <script src="dx-blazor.js"></script>
+    </head>
+    ```
+  
+6. Register DevExpress.Blazor namespace in _\_Imports.razor_ file:
+
+   ```html
+   @using DevExpress.Blazor
+   ```
+
+7. Your application is ready to use DevExpress Blazor.
 
 # Troubleshooting
 
@@ -168,20 +191,34 @@ If you don't see packages in the ```https://nuget.devexpress.com/early-access/ap
 * Data Grid
   * Column Types
   * Templates
+  * Scrolling
+  * Virtual Scrolling
+  * Cascading Editors
+  * Edit Form Template Validation
   * Large Datasets
 * Pivot Grid
   * Data Binding Basics
   * Templates
   * Large Datasets
-* Tabs
+* Scheduler
+  * Day View
+  * Work Week View
+  * Week View
+  * Recurring Appointments
+* Data Editors
+  * ComboBox – Business Object List
+  * ComboBox - Virtual Scrolling
+  * ComboBox - Allow Input
+  * ComboBox - Incremental Filtering
+  * ComboBox - NullText
+  * ComboBox – Cascading Lists
+  * Spin Edit
+  * Date Edit  
+  * Text Box
+* TreeView
 * Form Layout
 * Form Validation
-* Data Editors
-  * Combo Box – Business Object List
-  * Combo Box – Cascading Lists
-  * Date Edit
-  * Spin Edit
-  * Text Box
+* Tabs
 * Pager
 
 # NuGet Package Change Log
